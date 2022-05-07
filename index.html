@@ -26,7 +26,6 @@ h1{
 
 html{
     background-color: rgb(27, 27, 27);
-   
 }
 
 
@@ -101,7 +100,7 @@ html{
   height: 100%;
   align-content: center;
   display: flex;
-  
+ 
   font-family: "Indie Flower";
 
 }
@@ -117,7 +116,6 @@ html{
   opacity: 0.6;
   background-image: url("textured-paper.png");
   background-color: #fff;
-  background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: cover;
   z-index: -1;
@@ -126,6 +124,8 @@ html{
 
 .card .centered::-webkit-scrollbar {
   display: none;
+  
+  
 }
 
 .card .centered{
@@ -133,7 +133,7 @@ html{
     margin: auto;
     display: flexbox;
     text-align: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height:100%;
 
 }
@@ -146,8 +146,9 @@ html{
   font-size:4em;
   text-align:center;
   margin: 20px auto;
-  min-height:255px;
+
   width:100%;
+  height:255px;
   display:block;
   
   color:white;
@@ -169,8 +170,6 @@ html{
     right: 0;
     bottom: 0;
 
-    
-
 }
 
 .ps{
@@ -180,9 +179,125 @@ html{
     color: #17cb1a;
 
 }
+
+
+.envelope {
+  position: relative;
+  cursor: pointer;
+}
+
+.back {
+  font-family: "Singlet";
+  position: relative;
+  width:250px;
+  height: 150px;
+  background-color: #6247aa;
+}
+
+
+.front {
+  position: absolute;
+  border-right: 130px solid #815ac0;
+  border-top: 75px solid transparent;
+  border-bottom: 75px solid transparent;
+  height:0;
+  width:0;
+  top:0;
+  left:120px;
+  z-index:3;
+}
+
+.front:before {
+  content:"";
+  position: absolute;
+  border-left: 130px solid #815ac0;
+  border-top: 75px solid transparent;
+  border-bottom: 75px solid transparent;
+  height:0;
+  width:0;
+  top:-75px;
+  left:-120px;
+}
+
+.front:after {
+  content:"";
+  position: absolute;
+  border-bottom: 80px solid #7251b5;
+  border-left: 125px solid transparent;
+  border-right:125px solid transparent;
+  height:0;
+  width:0;
+  top:-5px;
+  left:-120px;
+}
+
+.top {
+  position: absolute;
+  border-top: 105px solid #9163cb;
+  border-left: 125px solid transparent;
+  border-right:125px solid transparent;
+  height:0;
+  width:0;
+  top:0;
+  transform-origin: top;
+  transition: .4s;
+}
+
+.shadow {
+  position: absolute;
+  background-color: rgba(0,0,0,0.1);
+  width:250px;
+  height:10px;
+  top:220px;
+  border-radius:50%;
+}
+
+.envelope:hover .top {
+    transform: rotateX(160deg);
+}
+
+
+.overlay{
+    background-color: #dbddf2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 900;
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform-origin: top;
+    transition: .4s;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
     </style>
 </head>
 <body >
+    <div class="overlay" id="overlay"> 
+        
+        <div class="envelope" onclick="openLetter();">
+            <div class="back">
+                
+            </div>
+            
+            <div class="front"></div>
+            <div class="top" id="letter-top"></div>
+            <h2 style="width: 100%;">To Mom &#10084;</h2>
+            <div class="shadow"></div>
+        </div>
+        
+        
+    </div>
     <div class='console-container' onmousedown="startConfetti();" onmouseup="stopConfetti();"><span id='text'></span><div class='console-underscore' id='console'>&#95;</div></div>    
     
     <div class="container">
@@ -228,13 +343,25 @@ html{
       </div>
       <script src="confetti.js"></script>
       <script>
-          startConfetti();
+          function openLetter(){
+            var overlay = document.getElementById('overlay');
+
+            var top = document.getElementById('letter-top');
+
+            overlay.style.top = "100vh";
+            window.setInterval(function() {
+            startConfetti();
+            },400)
 
             window.setInterval(function() {
             stopConfetti();
             }, 3000)
 
-        consoleText(['happy mothers day!', 'we love you!', 'you are the best!'], 'text',['#17cb1a','#17cb1a','#17cb1a']);
+            consoleText(['happy mothers day!', 'we love you!', 'you are the best!'], 'text',['#17cb1a','#17cb1a','#17cb1a']);
+
+          }
+          
+
 
         function consoleText(words, id, colors) {
         if (colors === undefined) colors = ['#fff'];
