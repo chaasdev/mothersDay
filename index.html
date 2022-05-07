@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet"> 
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet"> 
+<style>
+
+h1, h2, h3 {
+    font-family: "Sniglet"
+}
+
+h1{
+    text-align: center;
+    font-size: 4vw;
+    text-shadow: rgba(0, 0, 0, 0.201) 2px 2px 2px;
+}
+
+html{
+    background-color: rgb(27, 27, 27);
+   
+}
+
+
+.container
+{
+  max-width: 1000px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card
+{
+    
+  position: relative;
+  margin: 20px;
+  width: 45vw;
+  height: 60vw;
+  max-width:450px;
+  max-height:600px;
+  min-width: 300px;
+  min-height: 400px;
+  background: #fff;
+  transform-style: preserve-3d;
+  transform: perspective(2000px);
+  box-shadow: inset 300px 0 50px rgba(0,0,0,.5), 0 20px 20px rgba(0,0,0,.5);
+  transition: 1s;
+}
+.card:hover
+{
+  z-index: 10000;
+  transform: perspective(2000px) rotate(-10deg);
+  box-shadow: inset 20px 0 50px rgba(0,0,0,.5), 0 10px 100px rgba(0,0,0,.5);
+}
+
+.card .Box
+{
+  background-image: url("textured-paper.png");
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  transform-origin: left;
+  z-index: 2;
+  transition: 1s cubic-bezier(.15,1.7,.84,.58);
+  background-color: #ffffff;
+}
+.card .Box img
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fit;
+  background-repeat: no-repeat;
+}
+.card:hover .Box
+{
+  transform: rotateY(-135deg);
+}
+.card .details
+{
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 20px;
+  z-index: 1;
+  height: 100%;
+  align-content: center;
+  display: flex;
+  overflow-y: none;
+  font-family: "Indie Flower";
+
+}
+
+.card .details:before{
+    content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  background-image: url("textured-paper.png");
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  z-index: -1;
+
+}
+
+.card .details::-webkit-scrollbar {
+  display: none;
+}
+
+.card .centered{
+    width: 80%;
+    margin: auto;
+    display: flexbox;
+    text-align: center;
+
+}
+.hidden {
+  opacity:0;
+}
+.console-container {
+ 
+  font-family:"Roboto Mono";
+  font-size:4em;
+  text-align:center;
+  margin: 20px auto;
+
+  width:100%;
+  display:block;
+  
+  color:white;
+
+
+}
+
+.console-underscore {
+   display:inline-block;
+  position:relative;
+  top:0;
+  left:0px;
+}
+
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    
+
+}
+
+.ps{
+
+    text-align: center;
+    font-family: "Montserrat";
+    color: #17cb1a;
+
+}
+    </style>
+</head>
+<body >
+    <div class='console-container' onmousedown="startConfetti();" onmouseup="stopConfetti();"><span id='text'></span><div class='console-underscore' id='console'>&#95;</div></div>    
+    
+    <div class="container">
+        <div class="card">
+            <div class="Box">
+                <img src="Tat-Cover.png">
+            </div>
+            <div class="details">
+                <div class="centered">
+                  <h2>Memoirs of a 24-year-old</h2>
+                  <p>
+                  A snake may bite you if you try to save it from a fire. That doesn't mean you should leave it in there.
+                  <br>
+                  <br>
+                  But sometimes you will have to journey out in order to find a stick. 
+                  <br>
+                  <br>
+                  May you never stop saving snakes from the fire, but always remember to use a stick.
+                  <br>
+                  <br>
+                  I hope you find your stick.<br>
+                  (p.s. its ok to give the snake some time to think about what it has done) 
+                  </p>
+                </div>
+              
+            </div>
+          </div>
+          <div class="card">
+            <div class="Box">
+              <img src="Letter - 2.png">
+            </div>
+            <div class="details">
+                <div class="centered">
+                  <h2>Happy Mother's Day!</h2> 
+                  <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                </div>
+              
+            </div>
+          </div>
+      </div>
+      <div >
+          <h3 class="ps">p.p.s. chris loves you more</h3>
+      </div>
+      <script src="confetti.js"></script>
+      <script>
+          startConfetti();
+
+            window.setInterval(function() {
+            stopConfetti();
+            }, 3000)
+
+        consoleText(['happy mothers day!', 'we love you!', 'you are the best!'], 'text',['#17cb1a','#17cb1a','#17cb1a']);
+
+        function consoleText(words, id, colors) {
+        if (colors === undefined) colors = ['#fff'];
+        var visible = true;
+        var con = document.getElementById('console');
+        var letterCount = 1;
+        var x = 1;
+        var waiting = false;
+        var target = document.getElementById(id)
+        target.setAttribute('style', 'color:' + colors[0])
+        window.setInterval(function() {
+
+            if (letterCount === 0 && waiting === false) {
+            waiting = true;
+            target.innerHTML = words[0].substring(0, letterCount)
+            window.setTimeout(function() {
+                var usedColor = colors.shift();
+                colors.push(usedColor);
+                var usedWord = words.shift();
+                words.push(usedWord);
+                x = 1;
+                target.setAttribute('style', 'color:' + colors[0])
+                letterCount += x;
+                waiting = false;
+            }, 1000)
+            } else if (letterCount === words[0].length + 1 && waiting === false) {
+            waiting = true;
+            window.setTimeout(function() {
+                x = -1;
+                letterCount += x;
+                waiting = false;
+            }, 5000)
+            } else if (waiting === false) {
+            target.innerHTML = words[0].substring(0, letterCount)
+            letterCount += x;
+            }
+        }, 120)
+        window.setInterval(function() {
+            if (visible === true) {
+            con.className = 'console-underscore hidden'
+            visible = false;
+
+            } else {
+            con.className = 'console-underscore'
+
+            visible = true;
+            }
+        }, 400)
+        }
+      </script>
+        
+</body>
+</html>
